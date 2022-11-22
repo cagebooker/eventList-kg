@@ -22,3 +22,64 @@ $side-bar-width: 200px;
 
     }
 }
+.devise-field{
+    position: absolute;
+    left: calc(50% - 100px);
+    transform: translate(-200px,-50%);
+    top: 50%;
+    width:400px;
+    z-index: 50;
+    transform-style: preserve-3d;
+}
+div.devise-field::before{
+    content:'';
+    position: absolute;
+    left: calc(-50vw + 200px);
+    top: calc(-50vh + 50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    transform: translateZ(-10px);
+    backdrop-filter: blur(3px);
+}
+.devise-btn{
+    width: 49%;
+}
+.devise-btn:nth-child(2){
+    width: 49%;
+    position: relative;
+    left: 3px;
+}
+/* flash 特效處理 */
+.notification{
+    margin: 0px;
+    position: fixed;
+    bottom: 0px;
+    padding:4px 8px;
+    width: 30%;
+    animation-name: fadeOut;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    opacity: 0;
+    left: -100%;
+}
+@keyframes fadeOut{
+    0%{
+        left: -100%;
+        opacity: 0;
+    }
+    20%{
+        left: 0%;
+        opacity: 1;
+    }
+    80%{
+        left: 0%;
+        opacity: 1;
+    }
+    100%{
+        left: 100%;
+        opacity: 0.5;
+    }
+}
+
+

@@ -10,11 +10,12 @@
   </head>
 
   <body>
-    <div class="side-bar">123</div>
+
+    <div class="side-bar">(施工中...)</div>
     <div class="main has-background-success-light">
       <%= render 'shared/navbar' %>
       <%= yield %>
     </div>
-
+    <%= render 'shared/flash' if notice %>
   </body>
 </html>

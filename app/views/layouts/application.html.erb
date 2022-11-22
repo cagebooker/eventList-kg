@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="side-bar">123</div>
+    <div class="main">
+      <%= render 'shared/navbar' %>
+      <%= yield %>
+    </div>
+
   </body>
 </html>

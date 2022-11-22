@@ -1,11 +1,24 @@
+$side-bar-width: 200px;
 .side-bar{
-    width: 200px;
+    width: $side-bar-width;
     background-color: #FBFBFA;
     display: inline-block;
     height: 100vh;
-    position: relative;
+    position: absolute;
 }
 .main{
     display: inline-block;
-    position: relative;
+    width: calc(100% - 200px);
+    left: 200px;
+    position: absolute;
+    height: 100vh;
+}
+.navbar{
+    background-color: transparent;
+    .event-name{
+        position: absolute;
+        top:-2px;
+        font-size: 12px;
+
+    }
 }

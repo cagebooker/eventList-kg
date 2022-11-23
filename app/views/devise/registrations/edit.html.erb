@@ -27,7 +27,16 @@
             <%= f.label :password_confirmatio, '密碼確認', class:'label' %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'input is-small'  %>
           </div>
+        </div>
 
+        <div class="column is-2 is-offset-1">
+          <div class="field">
+            <%= f.label :avatar, '大頭貼上傳', class:'label' %>
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+        <div class="column is-2">
+          <%= image_tag current_user.avatar.variant(resize:'60x60'), class:"user-avatar is-pulled-right" if current_user.avatar.attached? %>
         </div>
 
       </div>
@@ -48,8 +57,10 @@
     <% end %>
 
       <div class="columns">
-        <div class="column is-9 is-offset-1">
-          <%= link_to "Back", :back ,class:'btn-hover-white is-pulled-right'%>
+        <div class="column is-4 is-offset-1">
+        </div>
+        <div class="column is-4 is-offset-1">
+
         </div>
       </div>
 

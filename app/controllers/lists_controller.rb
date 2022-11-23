@@ -1,9 +1,11 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :set_lists, only: [:show ]
 
   # GET /lists or /lists.json
   def index
-    @lists = List.all
+    @lists = current_user.lists
   end
 
   # GET /lists/1 or /lists/1.json
@@ -61,6 +63,9 @@ class ListsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_list
       @list = List.find(params[:id])
+    end
+    def set_lists
+      @lists = current_user.lists
     end
 
     # Only allow a list of trusted parameters through.

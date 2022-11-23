@@ -19,6 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'foreman', '~> 0.87.2'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'acts_as_list', '~> 1.0', '>= 1.0.4'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

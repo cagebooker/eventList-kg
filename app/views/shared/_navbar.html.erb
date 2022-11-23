@@ -20,7 +20,9 @@
         <div class="dropdown is-right is-hoverable">
           <div class="dropdown-trigger">
             <button class="button" style="border:none" aria-haspopup="true" aria-controls="dropdown-menu6">
-              <span><%= image_tag current_user.avatar.variant(resize:'60x60'), class:"user-avatar is-pulled-right" if current_user.avatar.attached? %></span>
+              <% if user_signed_in? %>
+                <span><%= image_tag current_user.avatar.variant(resize:'60x60'), class:"user-avatar is-pulled-right" if current_user.avatar.attached? %></span>
+              <% end %>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>

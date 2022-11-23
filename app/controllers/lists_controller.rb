@@ -10,6 +10,7 @@ class ListsController < ApplicationController
 
   # GET /lists/1 or /lists/1.json
   def show
+    @events = @list.events.order(id: :desc)
   end
 
   # GET /lists/new
@@ -23,7 +24,7 @@ class ListsController < ApplicationController
 
   # POST /lists or /lists.json
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.new(list_params)
 
     respond_to do |format|
       if @list.save
@@ -67,9 +68,8 @@ class ListsController < ApplicationController
     def set_lists
       @lists = current_user.lists
     end
-
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:name, :user_id, :position, :deleted_at)
+      params.require(:list).permit(:name, :position, :deleted_at)
     end
 end

@@ -17,3 +17,67 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import "../styles"
 
+// vue.js
+import Vue from 'vue/dist/vue.esm';
+import List from 'components/list.vue'
+import Rails from '@rails/ujs'
+
+
+document.addEventListener("turbolinks:load", function(event){
+  let el = document.querySelector('#board');
+  if(el){
+  new Vue({
+    el,
+    data:{
+      lists: JSON.parse(el.dataset.lists),
+      eventEditing: false,
+
+    },
+    computed:{
+    },
+    components:{List},
+    methods:{
+      newList(evt){
+        evt.preventDefault()
+        // console.log("ready to new a list")
+        let data = new FormData();
+        data.append("list[name]", '尚未決定名稱...');
+        // lists
+        Rails.ajax({
+          url: '/lists',
+          type: 'POST',
+          data,
+          dataType: 'json',
+          success: res =>{
+            console.log('success')
+          },
+          error: err => {
+            console.log(err)
+          }
+        })
+      },
+      createEvent(evt){
+        evt.preventDefault()
+        let data = new FormData()
+        data.append
+        Rails.ajax({
+          url:'',
+          type: 'POST',
+          data,
+          dataType:'json',
+          success: res => {
+            console.log(res)
+          },
+          error: res => {
+            console.log(err)
+          }
+        })
+      }
+    },
+    mounted(){
+      console.log("in vue")
+    }
+    })
+  };
+})
+

@@ -10,28 +10,20 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="columns">
+    <div class="column is-4">
+      <div class="field">
+        <%= form.text_field :name, class:'input is-small list-name-input' %>
+      </div>
+    </div>
+    <div class="column is-4">
+      <div class="actions">
+        <%= form.submit '更新名稱', class:'button is-small' %>
+        <%= link_to '刪除這個list', list_path(@list),method: :delete, class:'button is-small hover-transparent', data: {confirm:"確定要刪除這個List嗎？"} %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.number_field :position %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deleted_at %>
-    <%= form.datetime_select :deleted_at %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+

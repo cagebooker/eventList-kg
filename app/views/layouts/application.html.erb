@@ -10,11 +10,14 @@
   </head>
 
   <body>
-    <%= render 'shared/sidebar' %>
-    <div class="main">
-      <%= render 'shared/navbar' %>
-      <%= yield %>
+    <div id="board" data-lists="<%= @lists.to_json(include: :events) %>">
+      <%= render 'shared/sidebar' %>
+      <div class="main">
+        <%= render 'shared/navbar' %>
+        <%= yield %>
+      </div>
+      <%= render 'shared/flash' if notice %>
     </div>
-    <%= render 'shared/flash' if notice %>
+
   </body>
 </html>

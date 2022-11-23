@@ -1,12 +1,16 @@
 <div class="side-bar">
     <div class="list-group mt-4">
         <% if user_signed_in? %>
-          <% @lists.each do |list|  %>
+          <% current_user.lists.each do |list|  %>
             <div class="list-item">
-                <i class="fa-solid fa-share mr-1"></i>
-                <%= link_to list.name, list_path(list), class:'hover-transparent' %>
+              <i class="fa-solid fa-share mr-1"></i>
+              <%= link_to list.name, list_path(list), class:'hover-transparent' %>
             </div>
           <% end %>
         <% end %>
+        <div class="list-item">
+          <i class="fa-solid fa-plus mr-1"></i>
+          <a href="#" class="hover-transparent" @click="newList">新增一個list</a>
+        </div>
     </div>
 </div>

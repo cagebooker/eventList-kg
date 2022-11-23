@@ -108,6 +108,95 @@ div.devise-field::before{
     font-size: 14px;
     &:hover{
         background-color: $list-bg-color;
-    };
+    }
+    a{
+        display: inline-block;
+        width: 150px;
+        color: #666666;
+    }
+}
+.list-name-input{
+    width: 300px;
+    border: none;
+    box-shadow: none;
+    &:focus{
+        /* outline: none; */
+    }
 }
 
+/* event */
+.main{
+    .columns{
+        margin-left: 0px;
+    }
+}
+.event{
+    height: 80px;
+    width:200px;
+    position: relative;
+    border-top: 3px solid rgba(0,0,0,0.6);
+    border-left: 3px solid rgba(0,0,0,0.6);
+}
+div.event::before{
+    content:'';
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    right: -9px;
+    transform: translateY(-7px);
+}
+div.event-field-outside::before{
+    content:'';
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    bottom: -10px;
+    left: 36px;
+    transform: translateY(0px);
+}
+.event-field-outside{
+    /* position: absolute; */
+    position: relative;
+    top: 80px;
+    bottom: 80px;
+    left: 80px;
+    /* border: 1px solid blue; */
+    padding: 0px;
+
+}
+.event-field{
+    padding:0;
+    margin-left: 40px;
+    height: 70vh;
+    border-right: 1px solid #6666;
+    /* border: 1px solid red; */
+}
+.evt-name{
+    width: 60px;
+    border-bottom: 4px solid rgba(0,0,0,0.6);
+    position: absolute;
+    transform: skewX(-10deg) translateY(-10px);
+    right: -80px;
+    top: -10px;
+    input{
+        border: none;
+        cursor: pointer;
+        width:60px;
+        font-size: 16px;
+        &:focus{
+          outline:none;
+        }
+    }
+    .evt-icon{
+        position: absolute;
+        right: -18px;
+        top:3px;
+    }
+}
+*:focus {
+    outline: none;
+}

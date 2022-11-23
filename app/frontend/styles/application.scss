@@ -44,6 +44,14 @@ div.devise-field::before{
 }
 .devise-btn{
     width: 49%;
+    &:hover {
+        background-color:#fff;
+    }
+}
+.btn-hover-white{
+    &:hover{
+        background-color: #fff;
+    }
 }
 .devise-btn:nth-child(2){
     width: 49%;

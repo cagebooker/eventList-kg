@@ -11,6 +11,7 @@ class ListsController < ApplicationController
   # GET /lists/1 or /lists/1.json
   def show
     @events = @list.events.order(id: :desc)
+    # render json: @events
   end
 
   # GET /lists/new
@@ -63,7 +64,7 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      @list = current_user.lists.find(params[:id])
     end
     def set_lists
       @lists = current_user.lists

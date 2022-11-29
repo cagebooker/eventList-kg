@@ -21,62 +21,72 @@ import "../styles"
 import Vue from 'vue/dist/vue.esm';
 import List from 'components/list.vue'
 import Rails from '@rails/ujs'
-
+import store from 'stores/list.js'
+import Event from 'components/event.vue'
 
 document.addEventListener("turbolinks:load", function(event){
   let el = document.querySelector('#board');
+  if(document.querySelector('#list-id')){
+    var list_id = document.querySelector('#list-id').dataset.listId
+  }
+  if(document.querySelector('#list-events')){
+    var evt = document.querySelector('#list-events').dataset.list
+  }
+  // console.log(list_id)
+  var url = location.href;
+  // console.log(evt);
   if(el){
-  new Vue({
-    el,
-    data:{
-      lists: JSON.parse(el.dataset.lists),
-      eventEditing: false,
-
-    },
-    computed:{
-    },
-    components:{List},
-    methods:{
-      newList(evt){
-        evt.preventDefault()
-        // console.log("ready to new a list")
-        let data = new FormData();
-        data.append("list[name]", '尚未決定名稱...');
-        // lists
-        Rails.ajax({
-          url: '/lists',
-          type: 'POST',
-          data,
-          dataType: 'json',
-          success: res =>{
-            console.log('success')
-          },
-          error: err => {
-            console.log(err)
-          }
-        })
+    new Vue({
+      el,
+      store,
+      data:{
+        eventEditing: false,
+        eventName: '',
+        eventDescription: '',
       },
-      createEvent(evt){
-        evt.preventDefault()
-        let data = new FormData()
-        data.append
-        Rails.ajax({
-          url:'',
-          type: 'POST',
-          data,
-          dataType:'json',
-          success: res => {
-            console.log(res)
-          },
-          error: res => {
-            console.log(err)
-          }
-        })
+      computed:{
+        lists(){
+          return this.$store.state.lists
+        },
+        list(){
+          return this.$store.state.lists.find( list => list.id == list_id)
+        },
+        // listName(){
+        //   let list = this.$store.state.lists.find( list => list.id == list_id).name
+        //   console.log(list.name)
+        //   return list
+        // },
+        events(){
+          return this.$store.state.events
+        },
+      },
+      components:{List, Event},
+      methods:{
+        changeListName(evt){
+          // console.log(this.list.id)
+          this.$store.dispatch('updateList',{name: evt.target.value, list_id: this.list.id})
+        },
+        newList(evt){
+          evt.preventDefault()
+          // console.log("ready to new a list")
+          this.$store.dispatch('newList')
+        },
+        createEvent(evt){
+          evt.preventDefault()
+          // let data = new FormData()
+          // data.append("event[name]", this.eventName)
+          // data.append("event[description]", this.eventDescription)
+          this.$store.dispatch('createEvent',{name: this.eventName,
+            description: this.eventDescription, list_id: list_id})
+          this.eventName = ''
+          this.eventDescription = ''
+          this.eventEditing = false
+        }
+      },
+      beforeMount(){
+        this.$store.dispatch('loadLists',list_id)
+        this.$store.dispatch('loadEvents',list_id)
       }
-    },
-    mounted(){
-      console.log("in vue")
-    }
     })
   };
 })

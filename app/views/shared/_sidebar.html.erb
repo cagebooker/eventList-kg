@@ -1,12 +1,12 @@
 <div class="side-bar">
+    <div class="sidebar-username">
+      <% if user_signed_in? %>
+        <%= current_user.username %>
+      <% end %>
+    </div>
     <div class="list-group mt-4">
         <% if user_signed_in? %>
-          <% current_user.lists.each do |list|  %>
-            <div class="list-item">
-              <i class="fa-solid fa-share mr-1"></i>
-              <%= link_to list.name, list_path(list), class:'hover-transparent' %>
-            </div>
-          <% end %>
+          <List v-for="list in lists" :list="list" :key="list.id"></List>
         <% end %>
         <div class="list-item">
           <i class="fa-solid fa-plus mr-1"></i>

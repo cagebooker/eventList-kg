@@ -29,33 +29,43 @@ $gray: #EBEBEA;
 }
 .devise-field{
     position: absolute;
-    left: calc(50% - 100px);
+    left: calc(50%);
     transform: translate(-200px,-50%);
     top: 50%;
     width:400px;
     z-index: 50;
     transform-style: preserve-3d;
+    a:hover {
+        background-color: transparent;
+    }
 }
-div.devise-field::before{
+/* div.devise-field::before{
     content:'';
     position: absolute;
     left: calc(-50vw + 200px);
     top: calc(-50vh + 50%);
+    width: 10vw;
+    height: 10vh;
+    background-color: rgba(0,0,0,0.6);
+    transform: translateZ(-10px);
+    backdrop-filter: blur(3px);
+} */
+.login-layout{
+    /* content:''; */
+    /* position: absolute; */
+ /*    left: calc(-50vw + 200px);
+    top: calc(-50vh + 50%); */
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0,0.6);
-    transform: translateZ(-10px);
+    /* background-color: red; */
+    /* transform: translateZ(-10px); */
     backdrop-filter: blur(3px);
 }
 .devise-btn{
     width: 49%;
     &:hover {
         background-color:#fff;
-    }
-}
-.btn-hover-white{
-    &:hover{
-        background-color: #fff;
     }
 }
 .hover-transparent{

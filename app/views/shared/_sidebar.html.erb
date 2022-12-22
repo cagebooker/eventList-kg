@@ -7,10 +7,10 @@
     <div class="list-group mt-4">
         <% if user_signed_in? %>
           <List v-for="list in lists" :list="list" :key="list.id"></List>
+          <div class="list-item">
+            <i class="fa-solid fa-plus mr-1"></i>
+            <a href="#" class="hover-transparent" @click="newList">新增一個list</a>
+          </div>
         <% end %>
-        <div class="list-item">
-          <i class="fa-solid fa-plus mr-1"></i>
-          <a href="#" class="hover-transparent" @click="newList">新增一個list</a>
-        </div>
     </div>
 </div>

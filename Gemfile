@@ -22,6 +22,7 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'acts_as_list', '~> 1.0', '>= 1.0.4'
 gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
 gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-github', '~> 2.0', '>= 2.0.1'
 gem 'figaro', '~> 1.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
